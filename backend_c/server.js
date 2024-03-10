@@ -1,34 +1,24 @@
-require('dotenv').config()
-
-const express = require('express')
+import dotenv from 'dotenv';
+import express from 'express';
 const app = express()
-const port = 4000
+const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
-    res.send("Hello World!!")
-})
-app.get('/twitter', (req, res) => {
-    res.send('mohil027')
-})
-app.get('/login', (req, res) => {
-    res.send('<h1> please login here </h1>')
-})
-app.get('/youtube', (req, res) => {
-    res.send('<h2> Mohil was here </h2>')
-})
+    res.send("Server is ready!")
+});
 
-app.listen(process.env.PORT, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+app.get("/jokes", (req, res) => {
+    const jokes = [
+        { id: 1, title: "A joke", content: "This is a joke" },
+        { id: 2, title: "Penguin joke", content: "Why don't penguins like talking to strangers at parties? Because they find it hard to break the ice!" },
+        { id: 3, title: "Math joke", content: "Why was the math book sad? Because it had too many problems." },
+        { id: 4, title: "Programming joke", content: "Why do programmers prefer dark mode? Because light attracts bugs!" },
+        { id: 5, title: "Doctor joke", content: "Doctor: I'm sorry but you suffer from a terminal illness and have only 10 to live. Patient: What do you mean, 10? 10 what? Months? Weeks?! Doctor: Nine." }
+      ];
+    res.send(jokes);
 
-// const express = require('express')
-// const app = express()
-// const port = 3000
+});
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
-
-// app.listen(port, () => {
-//   console.log(`Example app listening on port ${port}`)
-// })
+app.listen(port, () => {
+    console.log(`Serve at http://localhost:${port}`)
+});
