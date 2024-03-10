@@ -19,6 +19,8 @@ app.get("/jokes", (req, res) => {
 
 });
 
+// use json formatter to read api
+
 app.listen(port, () => {
     console.log(`Serve at http://localhost:${port}`)
 });
